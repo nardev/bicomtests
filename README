@@ -1,0 +1,45 @@
+//============================================================================
+// Name        : README
+// Author      : Vedran Alajbegovic
+// Version     : 1
+// Copyright   : open/free
+// Description : README
+//============================================================================
+
+
+#1: Terminal tables
+
+Build with "g++ (Debian 4.4.5-8) 4.4.5"
+# g++ main.cpp -o main	
+
+
+#2: IP address lookup
+
+Build with "g++ (Debian 4.4.5-8) 4.4.5"
+# g++ main.cpp -o main	
+
+
+#2: IP address lookup - Bonus
+
+Since i had to used "sqlite3.h", it's required to build with "-lsqlite3" linkde.
+Build with "g++ (Debian 4.4.5-8) 4.4.5"
+
+# g++ main.cpp -o main -lsqlite3
+
+Sqlite Database Structure:
+
+"CREATE TABLE addresses (address TEXT, netmask NUMERIC)"
+
+Looks like:
++--------------+---------+
+|   address    | netmask |
++--------------+---------+
+| 192.168.1.0  |   28    |
++--------------+---------+
+|   10.0.0.5   |   20    |
++--------------+---------+
+
+
+#3: Test web page
+
+	Just open the index.html

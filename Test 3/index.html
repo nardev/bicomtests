@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>#3: Test web page</title>
+</head>
+<script type="text/javascript" language="javascript">
+
+function generateTable(){
+
+  	var container = document.getElementById('container');
+	var table = document.createElement("table");
+	table.setAttribute('id','bicomTable');
+
+	var tableHead = document.createElement("thead");
+	var newTh = document.createElement('th');
+  	var tableBody = document.createElement("tbody");
+
+  	container.appendChild(table);
+  	table.appendChild(tableHead);
+  	table.appendChild(tableBody);
+
+	var colId = document.createElement("th");
+		colId.innerHTML = "Id";
+
+	var colName = document.createElement("th");
+		colName.innerHTML = "Name";
+
+	var colEmail = document.createElement("th");
+		colEmail.innerHTML = "Email";
+
+	tableHead.appendChild(colId);
+	tableHead.appendChild(colName);
+	tableHead.appendChild(colEmail);
+
+	var rnr = Math.floor((Math.random()*20)+5);
+	for(var i = 0; i < rnr; i++){
+
+		var row=tableBody.insertRow(i);
+	  	var col1=row.insertCell(0);
+	  	var col2=row.insertCell(1);
+		var col3=row.insertCell(2);
+
+		col1.innerHTML=i+1;
+	  	col2.innerHTML="Name Surname "+(i*rnr+1);
+	  	col3.innerHTML="<a href=\"mailto:somename"+(i*rnr+1)+"\"@domain.com>somename"+(i*rnr+1)+"@domain.com</a>";
+	}
+}
+
+</script>
+
+<style type="text/css">
+body {
+	color: #222;
+	font-size: 14px;
+}
+
+a {
+	color: #333;
+}
+
+h1 {
+	margin: 0 0 15px 0;
+}
+
+table {
+	width: 100%;
+	text-align: left;
+	border: 3px solid #FFF;
+	padding: 3px;
+}
+
+table th { background: #666; color: #FFF; padding: 3px; }
+table td { padding: 4px; }
+table tr:nth-child(odd) td { background-color:#FBFBFB }
+table tr:nth-child(even) td { background-color:#CCC }
+table tr:hover td { background-color:#900; color: #FFF; }
+table tr:hover a { color: #FFF; }
+
+#wrapper {
+	margin: 30px auto;
+	width: 400px;
+	-webkit-border-radius: 15px 20px 20px 20px;
+	-moz-border-radius: 15px 20px 20px 20px;
+	border-radius: 15px 20px 20px 20px;
+	border: 3px solid #BFBFBF;
+	background: #EEE;
+	padding: 20px;
+}
+
+</style>
+
+<body onload="generateTable();">
+<div id="wrapper">
+	<h1 id="title">#3: Test web page</h1>
+	<div id="container"></div>
+</div>
+</body>
+</html>
