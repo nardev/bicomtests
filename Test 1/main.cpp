@@ -15,7 +15,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-	ifstream file(argv[1]); // vea add - should check if more spaces..
+	ifstream file(argv[1]); // vea add - no checking
 	if (!file) { cout << "Error: File doesn't exist!" << endl; return 0; }
 
 	vector<string> mapa;
