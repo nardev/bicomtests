@@ -23,43 +23,43 @@ using namespace std;
 
 string convertNetmask(const string mask)
 {
-				int tmp = atoi(mask.c_str());
-				uint32_t x = 0xFFFFFFFF << (32 - tmp);
-				ostringstream s;
-				s << (x >> 24) << '.' << (x >> 16 & 0xFF) << '.' << (x >> 8 & 0xFF) << '.' << (x & 0xFF);
-				return s.str();
+	int tmp = atoi(mask.c_str());
+	uint32_t x = 0xFFFFFFFF << (32 - tmp);
+	ostringstream s;
+	s << (x >> 24) << '.' << (x >> 16 & 0xFF) << '.' << (x >> 8 & 0xFF) << '.' << (x & 0xFF);
+	return s.str();
 }
 
 
 unsigned long convertIP(const std::string ip)
 {
-					int a, b, c, d;
-					unsigned long addr = 0;
+	int a, b, c, d;
+	unsigned long addr = 0;
 
-					if (sscanf(ip.c_str(), "%d.%d.%d.%d", &a, &b, &c, &d) != 4)
-						return 0;
+	if (sscanf(ip.c_str(), "%d.%d.%d.%d", &a, &b, &c, &d) != 4)
+		return 0;
 
-					addr = a << 24;
-					addr |= b << 16;
-					addr |= c << 8;
-					addr |= d;
-					return addr;
+	addr = a << 24;
+	addr |= b << 16;
+	addr |= c << 8;
+	addr |= d;
+	return addr;
 }
 
 bool isInRange(const string ip, const string network, const string mask)
 {
-				string msk = convertNetmask(mask);
-				unsigned long ip_addr = convertIP(ip);
-				unsigned long network_addr = convertIP(network);
-				unsigned long mask_addr = convertIP(msk);
-				unsigned long net_lower = (network_addr & mask_addr);
-				unsigned long net_upper = (net_lower | (~mask_addr));
+	string msk = convertNetmask(mask);
+	unsigned long ip_addr = convertIP(ip);
+	unsigned long network_addr = convertIP(network);
+	unsigned long mask_addr = convertIP(msk);
+	unsigned long net_lower = (network_addr & mask_addr);
+	unsigned long net_upper = (net_lower | (~mask_addr));
 
-				if (ip_addr >= net_lower &&
-					ip_addr <= net_upper)
-					return true;
+	if (ip_addr >= net_lower &&
+		ip_addr <= net_upper)
+		return true;
 
-				return false;
+	return false;
 }
 
 static int callbackDB(void *table, int argc, char **argv, char **szColName)
