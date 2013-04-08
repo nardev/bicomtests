@@ -75,10 +75,10 @@ static int callbackDB(void *table, int argc, char **argv, char **szColName)
 }
 
 int main(int argc, char* argv[]) {
-	string str = argv[1];
+	string command = argv[1];
 
 	// very basic check
-	if (str != "--database") { cout << "Error: missing --database argument!" << endl; return 0;}
+	if (command != "--database") { cout << "Error: missing --database argument!" << endl; return 0;}
 	if (argv[2] == NULL) { cout << "Error: database file!" << endl; return 0;}
 	string ip = argv[3];
 	if (argv[3] == NULL) { cout << "Error: no ip address!" << endl; return 0;}
@@ -112,7 +112,7 @@ int main(int argc, char* argv[]) {
 
 	if (table.size() != 0)
 	{
-		for (unsigned int i = 0 ; i < table.size(); i++){
+		for (int i = 0 ; i < table.size(); i++){
 			vector<string> row(table[i]);
 			if (isInRange(ip, row[0], row[1]))
 				cout << row[0] << "/" << row[1]<< endl; // belongs to a network
