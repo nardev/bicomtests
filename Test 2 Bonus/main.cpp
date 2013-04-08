@@ -55,9 +55,8 @@ bool isInRange(const string ip, const string network, const string mask)
 	unsigned long net_lower = (network_addr & mask_addr);
 	unsigned long net_upper = (net_lower | (~mask_addr));
 
-	if (ip_addr >= net_lower &&
-		ip_addr <= net_upper)
-		return true;
+	if (ip_addr >= net_lower && ip_addr <= net_upper)
+	return true;
 
 	return false;
 }
